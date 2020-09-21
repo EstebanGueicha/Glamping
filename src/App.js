@@ -1,28 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
-//import Domovirtual from './Componentes/Domovirtual';
-import Home from './Componentes/Home'
-import Glamping from './Componentes/Glamping';
-import Footer from './Componentes/Footer';
-import Domos from './Componentes/Domos';
-import Contacto from './Componentes/Contacto';
+import {Switch,Route} from 'react-router-dom';
+import Main from './Paginas/Main'
 
 
 
-
-class App extends Component {
-  render(){
-    return(
-      <div>
-      { <Home/>}
-        {<Glamping/>}
-        {<Domos/>}
-       {<Contacto/>}
-        {<Footer/>}
-      </div>
-
-    )
-  }
+function App() {
+  return (
+    <Switch>
+      <Route exact  path='/' component={Main} />
+    
+    </Switch>
+  );
 }
 
 export default App;

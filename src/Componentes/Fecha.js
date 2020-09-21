@@ -13,14 +13,23 @@ const localeMap = {
   
   };
 
-export default function MaterialUIPickers(props) {
+export default function Fecha(props) {
   // The first commit of Material-UI
   const [selectedDate, setSelectedDate] = React.useState(new Date());
   const [locale] = React.useState("es");
 
-  const handleDateChange = (date) => {
+  function pad(n) {
+    return n +1
+  }
+
+  function handleDateChange(date) {
     setSelectedDate(date);
-  };
+    var dia = date.getDate();
+    var month = date.getMonth();
+    var year = date.getFullYear();
+    var fecha = year + "-" +  pad(month) + "-" + dia ;
+    props.callbackFecha(fecha)
+  }
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils} locale={localeMap[locale]}>
@@ -32,6 +41,7 @@ export default function MaterialUIPickers(props) {
           format="dd/MM/yyyy"
           margin="normal"
           id="date-picker-inline"
+          disablePast
           color="primary"
           label={props.label}
           value={selectedDate}
